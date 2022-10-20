@@ -1,0 +1,89 @@
+[{
+        "id": 1,
+        "nombre": "Pedrive",
+        "cantidad": 1,
+        "marca": "SanDisk",
+        "img": "/imagenes/SanDisk.jpg",
+        "memoria": 64,
+        "color": "negro y rojo",
+        "precio": 1000,
+        "total": 0
+    },
+    {
+        "id": 2,
+        "nombre": "Pedrive",
+        "cantidad": 1,
+        "marca": "SanDisk",
+        "img": "/imagenes/SanDisk.jpg",
+        "memoria": 120,
+        "color": "negro y rojo",
+        "precio": 2000,
+        "total": 0
+    },
+    {
+        "id": 3,
+        "nombre": "Pedrive",
+        "cantidad": 1,
+        "marca": "SanDisk",
+        "img": "/imagenes/SanDisk.jpg",
+        "memoria": 500,
+        "color": "negro y rojo",
+        "precio": 2500,
+        "total": 0
+    },
+    {
+        "id": 4,
+        "nombre": "Pedrive",
+        "cantidad": 1,
+        "marca": "SanDisk",
+        "img": "/imagenes/SanDisk.jpg",
+        "memoria": 1000,
+        "color": "negro y rojo",
+        "precio": 4500,
+        "total": 0
+    },
+    {
+        "id": 5,
+        "nombre": "Pedrive",
+        "cantidad": 1,
+        "marca": "Kingtong",
+        "img": "/imagenes/Kingston.jpg",
+        "memoria": 64,
+        "color": "gris",
+        "precio": 1500,
+        "total": 0
+    },
+    {
+        "id": 6,
+        "nombre": "Pedrive",
+        "cantidad": 1,
+        "marca": "Kingtong",
+        "img": "/imagenes/Kingston.jpg",
+        "memoria": 120,
+        "color": "gris",
+        "precio": 2500,
+        "total": 0
+    },
+    {
+        "id": 7,
+        "nombre": "Pendrive ",
+        "cantidad": 1,
+        "marca": " Kingtong ",
+        "img": "/imagenes/Kingston.jpg",
+        "memoria": 500,
+        "color": "gris",
+        "precio": 3000,
+        "total": 0
+    },
+    {
+        "id": 8,
+        "nombre": "Pedrive",
+        "cantidad": 1,
+        "marca": "Kingtong",
+        "img": "/imagenes/Kingston.jpg",
+        "memoria": 100,
+        "color": "gris",
+        "precio": 5000,
+        "total": 0
+    }
+]
