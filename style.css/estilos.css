@@ -26,7 +26,7 @@ h1 {
     color: royalblue;
     text-transform: uppercase;
     font-weight: 700;
-    font-size: 54px;
+    font-size: 50px;
 }
 
 p {
@@ -34,11 +34,7 @@ p {
 }
 
 
-/* Pagina compras */
-
-.imagen {
-    width: 8rem;
-}
+/* tp */
 
 .producto {
     max-width: 20%;
@@ -63,8 +59,8 @@ p {
 }
 
 .my-modal {
-    width: 450px;
-    height: 520px;
+    width: 550px;
+    height: 620px;
     background-color: #fff;
     padding: 20px;
     z-index: 900;
@@ -153,7 +149,7 @@ p {
 
 .my-modal h2 {
     color: royalblue;
-    padding-bottom: 2px;
+    padding-bottom: 5px;
 }
 
 .my-modal #modal-close {
@@ -206,6 +202,11 @@ p {
     outline: none;
 }
 
+.imagenes {
+    width: 4rem;
+    height: 2rem;
+}
+
 
 /* Pagina Contacto*/
 
@@ -256,8 +257,4 @@ p {
 .boton__info:hover,
 .boton__recomendacion:hover {
     padding: 2rem;
-}
-
-.imagenes {
-    size: small;
 }

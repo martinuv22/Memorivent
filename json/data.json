@@ -43,13 +43,13 @@
         "total": 0
     },
     {
-        "id": 5,
+        "id": "5",
         "nombre": "Pedrive",
         "cantidad": 1,
         "marca": "Kingtong",
         "img": "/imagenes/Kingston.jpg",
         "memoria": 64,
-        "color": "gris",
+        "color": "plateado",
         "precio": 1500,
         "total": 0
     },
@@ -60,7 +60,7 @@
         "marca": "Kingtong",
         "img": "/imagenes/Kingston.jpg",
         "memoria": 120,
-        "color": "gris",
+        "color": "plateado",
         "precio": 2500,
         "total": 0
     },
@@ -71,7 +71,7 @@
         "marca": " Kingtong ",
         "img": "/imagenes/Kingston.jpg",
         "memoria": 500,
-        "color": "gris",
+        "color": "plateado",
         "precio": 3000,
         "total": 0
     },
@@ -82,7 +82,7 @@
         "marca": "Kingtong",
         "img": "/imagenes/Kingston.jpg",
         "memoria": 100,
-        "color": "gris",
+        "color": "plateado",
         "precio": 5000,
         "total": 0
     }

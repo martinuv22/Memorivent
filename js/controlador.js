@@ -1,8 +1,11 @@
 //MI MODAL 
+
 const modalContainer = document.querySelector('#modal-container')
 const modal = document.querySelector('#modal')
 const abrirModal = document.querySelector('#modal-open')
 const cerrarModal = document.querySelector('#modal-close')
+
+
 
 abrirModal.addEventListener('click', () => {
     modalContainer.classList.add('modal-container-active')
@@ -25,55 +28,96 @@ modal.addEventListener('click', (event) => {
 const contadorCarrito = document.getElementById(`contadorCarrito`)
     //Precio total
 const precioTotal = document.getElementById(`precioTotal`)
-    //carrito
+
+//carrito
 const contenedorProductos = document.getElementById('contenedor_productos');
 const contenedorCarrito = document.querySelector('#lista-carrito tbody');
 const carritoCompra = document.querySelector('#carrito');
 const vaciarCarritoBtn = document.querySelector('#vaciar-carrito');
 const listaProductos = document.querySelector('#lista-productos');
 const productosCarrito = document.getElementById('productos-carrito');
+
+
 let carrito = [];
+
 cargarEventListeners();
-//Agrega los productos
+
 contenedorProductos.addEventListener('click', agregarProducto);
 // Elimina productos del carrito
 carritoCompra.addEventListener('click', eliminarProducto);
 
-//trae los productos
 function cargarEventListeners() {
+
     document.addEventListener('DOMContentLoaded', traerProductos);
-    // Muestra los productos de local Storage 
+    // Muestra los productos de local Storage y calculamos total a pagar
     document.addEventListener('DOMContentLoaded', () => {
         carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
         mostrarHTML();
     })
 
-    //Funcion para vaciar el carrito
+
+
+    // Vaciar el carrito
     vaciarCarritoBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        productosCarrito.style.display = "none"
-        carrito = []; // reseteamos el arreglo
-        cantidadTotal = 0; // reseteamos la variable cantidadTotal
-        contadorCarrito.innerHTML = cantidadTotal
-        precioTotal.innerHTML = 0;
-        localStorage.removeItem("carrito");
-        eliminarHTML(); // Eliminamos todo el HTML
+        Swal.fire({
+            title: "Está seguro de eliminar todos los producto del carrito?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Sí, seguro",
+            cancelButtonText: "No, no quiero",
+        }).then((result) => {
+                e.preventDefault();
+                productosCarrito.style.display = "none"
+                carrito = []; // reseteamos el arreglo
+                cantidadTotal = 0; // reseteamos la variable cantidadTotal
+                contadorCarrito.innerHTML = cantidadTotal
+                precioTotal.innerHTML = 0;
+                localStorage.removeItem("carrito");
+                limpiarHTML(); // Eliminamos todo el HTML
+
+                Swal.fire({
+                    title: "Borrado!",
+                    icon: "success",
+                    text: "Los productos han sido borrados",
+                });
+
+            }
+
+        );
 
     })
-}
-//funcion para eliminar los productos dek carrito
-function eliminarProducto(e) {
-    if (e.target.classList.contains('boton-eliminar')) {
-        e.preventDefault();
-        const productoId = e.target.getAttribute('data-id')
-            // Elimina del arreglo de articulosCarrito por el data-id
-        carrito = carrito.filter(producto => producto.id !== productoId);
-        mostrarHTML(); // Iterar sobre el carrito y mostrar su HTML
-    }
+};
 
+function eliminarProducto(e) {
+    Swal.fire({
+        title: "Está seguro de eliminar el/los producto/s seleccionado/s",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Sí, seguro",
+        cancelButtonText: "No, no quiero",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            if (e.target.classList.contains('borrar-producto')) {
+                e.preventDefault();
+                const productoId = e.target.getAttribute('data-id')
+                    // Elimina del arreglo de articulosCarrito por el data-id
+                carrito = carrito.filter(producto => producto.id !== productoId);
+                mostrarHTML(); // Iterar sobre el carrito y mostrar su HTML
+            }
+            Swal.fire({
+                title: "Borrado!",
+                icon: "success",
+                text: "El archivo ha sido borrado",
+            });
+        }
+    });
 }
-//Traigo los productos de json y los renderizo en el DOM
+
+
+
+
+
 async function traerProductos() {
     try {
         //codigo peligroso
@@ -85,7 +129,7 @@ async function traerProductos() {
             div.innerHTML = `
                 
                 <h3>Pendrive</h3>
-                <img src=${producto.img} alt="producto"> 
+                <img src=${producto.img} alt=""> 
                 <p class="marca">Marca: ${producto.marca}</p>
                 <p class="memoria">Memoria en GB: ${producto.memoria}</p>
                 <p class="color">Color: ${producto.color}</p>
@@ -93,14 +137,16 @@ async function traerProductos() {
                 <button id="${producto.id}" class= "boton-agregar">Agregar<i= class "fas fa-shopping-cart"></i></button>
                 `;
             contenedorProductos.appendChild(div);
+
             const botones = document.getElementById(`boton${producto.id}`);
+
         });
     } catch (error) {
         console.log(error);
     }
 
 }
-//funcion para agregar los productos del carrito
+
 function agregarProducto(e) {
     if (e.target.classList.contains('boton-agregar')) {
         const producto = e.target.parentElement;
@@ -108,7 +154,7 @@ function agregarProducto(e) {
         leerProducto(producto);
     }
 }
-//esta funcion lee las caracteristicas de cada uno de los productos y los agregas  como nuevo o en su defecto los suma a la cantidad y el precio
+
 function leerProducto(producto) {
     const datosProducto = {
         nombre: producto.querySelector('h3').textContent,
@@ -121,7 +167,9 @@ function leerProducto(producto) {
         cantidad: 1,
         total: 0
     };
+
     datosProducto.total = datosProducto.precio * datosProducto.cantidad;
+
     const existe = carrito.some((producto) => producto.id === datosProducto.id);
     if (existe) {
         const productos = carrito.map((producto) => {
@@ -142,27 +190,35 @@ function leerProducto(producto) {
 
     mostrarHTML();
 }
+
+
+
+
+
+
+
 //Muestra lo que hay en mi carrito
+
 function mostrarHTML() {
     let cantidadProductos = 0;
 
     carrito.length > 0 ? productosCarrito.style.display = "block" : productosCarrito.style.display = "none"
 
     //Limpia el HTML
-    eliminarHTML();
+    limpiarHTML();
 
     // Recorre el carrito y genera el HTML
     carrito.forEach(producto => {
         const { imagen, marca, precio, cantidad, total, id } = producto;
-        const row = document.createElement('tr')
-        row.classList.add('productoEnCarrito')
+        const row = document.createElement('tr');
+        row.classList.add(`productoEnCarrito`);
         row.innerHTML = `
-      <td class="imagen"><img src="${imagen}"></td>
+      <td><img class="imagenes" src="${imagen}" ></td>
       <td>${marca}</td>
       <td>precio: $${precio}</td>
-      <td>cantidad:   ${cantidad}</td>
+      <td>cantidad: ${cantidad}</td>
       <td>total: $${total}</td>
-      <td class="espacio"><a href="#" class="boton-eliminar" data-id="${id}"> X </a></td>
+      <td><a href="#" class="borrar-producto boton-eliminar" data-id="${id}"> X </a></td>
     `;
 
         // Agrega el HTML del carrito en el tbody
@@ -171,26 +227,31 @@ function mostrarHTML() {
     // obtenemos la cantidad total de productos y lo mostramos junto al carrito
     for (let i = 0; i < carrito.length; i++) {
         cantidadProductos += carrito[i].cantidad
+
     }
-    if (cantidadProductos != 0) {}
-    //muestra el precio total en el carrito
+
+    if (cantidadProductos != 0) {
+
+    }
+
     precioTotal.innerHTML = carrito.reduce((acc, producto) => acc + producto.total, 0)
-        //muestra la cantidad de productos en header
     contadorCarrito.innerHTML = cantidadProductos;
     productosCarrito.innerHTML = cantidadProductos;
-    // Agregar el carrito de compras al Local storage
+    // Agregar el carrito de compras al storage
     sincronizarStorage();
 
 }
 
+
 // Elimina los productos del tboby
-function eliminarHTML() {
+function limpiarHTML() {
     while (contenedorCarrito.firstChild) {
         contenedorCarrito.removeChild(contenedorCarrito.firstChild);
     }
+
     productosCarrito.innerHTML = "";
 }
-//sicroniza el Local Storaje
+
 function sincronizarStorage() {
     localStorage.setItem('carrito', JSON.stringify(carrito));
 
