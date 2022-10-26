@@ -38,26 +38,28 @@
         <div class="container-fluid">
             <div class="contenidos row">
                 <div class="contenido">
-                    <h1 data-aos="fade-right" data-aos-duration="80000" class="contenido__titulo pt-5">Cripto Vida:Contacto</h1>
+                    <h1 data-aos="fade-right" data-aos-duration="80000" class="contenido__titulo pt-5">Memorivent:Contacto</h1>
                     <h2 class="contenido__subtitulo">Por favor rellene este formulario y nos contactaremos con usted:</h2>
                     <form data-aos="fade-down" class="contenido__sectionf" action=" " method="get " enctype="text/plain " id="formulario">
                         <label for="nombre ">Nombre y Apellido</label>
-                        <input type="text " name="nombre " id="nombre ">
+                        <input type="text " name="nombre " id="number">
                         <label for="documento ">Documento</label>
-                        <input type="number " name="documento " id="documento ">
+                        <input type="number " name="documento " id="document ">
                         <label for="mail ">Mail</label>
-                        <input type="email " name="mail " id="mail ">
+                        <input type="email " name="mail " id="e-mail ">
                         <label for="textarea">Consulta o Sugerencia</label>
                         <textarea class="textarea" name="consultas " id="Consultas " cols="30 " rows="10 " id="areaTexto"></textarea>
-                        <button class="contenido__boton">enviar</button>
+                        <button id="btn" class="contenido__boton">enviar</button>
                     </form>
+                    <div id="respuesta"></div>
                 </div>
             </div>
+
     </main>
 
     <script src="/js/formulario.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

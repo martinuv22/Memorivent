@@ -1,0 +1,12 @@
+{
+    "name": "consultas-martin-g-utrera--",
+    "version": "1.0.0",
+    "description": "servidor para pruebas",
+    "main": "formulario.js",
+    "scripts": {
+
+        "json:server": "json-server --watch ./json/db.json"
+    },
+    "author": "",
+    "license": "ISC"
+}
