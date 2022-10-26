@@ -1,3 +1,4 @@
+//En caso de querer hacerlo funcionar con Json, y almacenar los datos en Json.
 /*const formulario = document.querySelector(`#formulario`);
 // funcion para extraer los datos del formularios y poderlos ver JSON.
 const proce                                                                                                                                                                                    
@@ -14,6 +15,11 @@ const proce
 
 formulario.addEventListener(`submit`, procesar)
 */
+
+
+
+// Importante para hacer funcionar el servidor de prueva, en la terminal tipear: npm run json:server
+
 
 const btn = document.querySelector('#btn');
 const formulario = document.querySelector('#formulario');
@@ -59,9 +65,9 @@ const postData = async() => {
 
 btn.addEventListener('click', (event) => {
     Swal.fire({
-        title: "Su mensaje mensaje a sido enviado con exitos!",
+        title: "Su mensaje ha sido enviado con exito!",
         icon: "success",
-        text: "Nos contactaremos a la brevedad",
+        text: "Pronto nos contactaremos con usted",
     });
     event.preventDefault();
     postData();
